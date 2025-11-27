@@ -13,7 +13,7 @@ import Aibot from "./Pages/Aibot";
 import Booking from "./Pages/Booking";
 import Contact from "./Pages/Contact";
 import DonatePage from "./Pages/DonatePage";
-import Telemedicine from "./Pages/telemedicine";
+import Telemedicine from "./Pages/Telemedicine";
 import VideoCall from "./Pages/VideoCall";
 import DoctorsDashboard from "./Pages/DoctorsDashboard";
 import AanganwadiStaffDashboard from "./components/StudentDashboard/AanganwadiStaffDashboard";
