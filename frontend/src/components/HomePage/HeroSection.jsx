@@ -17,7 +17,7 @@ const HeroSection = () => {
         {/* Image Placeholder */}
         <div className="lg:w-1/2 flex justify-center mt-8 lg:mt-0">
           <img
-            src="./src/assets/image 35.png"
+            src="./src/assets/image35.png"
             alt="Healthcare Illustration"
             className="w-full max-w-md lg:max-w-lg"
           />
