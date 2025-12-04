@@ -1,6 +1,7 @@
 import React from "react";
-
+import healthcareImg from "../assets/image35.png";
 const HeroSection = () => {
+
   return (
     <section className="flex justify-center px-4 sm:px-6 md:px-12 lg:px-24 mb-48 py-8 sm:py-12 md:py-16 bg-white">
       <div className="flex flex-col lg:flex-row items-center max-w-6xl w-full lg:gap-16 xl:gap-24">
@@ -17,7 +18,7 @@ const HeroSection = () => {
         {/* Image Placeholder */}
         <div className="lg:w-1/2 flex justify-center mt-8 lg:mt-0">
           <img
-            src="./src/assets/image35.png"
+            src={healthcareImg}
             alt="Healthcare Illustration"
             className="w-full max-w-md lg:max-w-lg"
           />
