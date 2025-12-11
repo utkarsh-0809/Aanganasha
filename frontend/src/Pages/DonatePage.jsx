@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { api } from '../axios.config.js';
 import { 
   DollarSign, 
@@ -49,18 +49,21 @@ const DonatePage = () => {
   ];
 
  async function handlepayment(){
-  if(!moneyDonation.amount|| moneyDonation.amount==0){
+  if(activeTab!=='money'){
     return;
   }
-       setLoading(true);
-    const value=  await MakePayment(donorInfo,moneyDonation.amount,setSubmitSuccess);
-      // console.log(value.code);
-      setLoading(false);
-      // if(value.code!="BAD_REQUEST_ERROR"){
-      
-      // setSubmitSuccess(true)
-      // }
-      // else setSubmitSuccess(false);
+  
+  // Validate and convert amount to number
+  const amount = parseFloat(moneyDonation.amount);
+  if(!amount || amount <= 0 || isNaN(amount)){
+    setError('Please enter a valid donation amount');
+    return;
+  }
+  
+  setLoading(true);
+  // Pass the amount as a number (not string) to MakePayment
+  await MakePayment(donorInfo, amount, setSubmitSuccess);
+  setLoading(false);
   }
 
   const handleDonorInfoChange = (e) => {
@@ -155,7 +158,7 @@ const DonatePage = () => {
       }
 
       // Add images
-      selectedImages.forEach((image, index) => {
+      selectedImages.forEach((image) => {
         formData.append('images', image);
       });
 

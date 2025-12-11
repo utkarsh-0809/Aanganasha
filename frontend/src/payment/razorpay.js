@@ -45,7 +45,10 @@ export async function MakePayment(
     }
 
     // Initiating the Order in Backend
-    const orderResponse = await api.post('/payment/capture',{amount});
+    // Ensure amount is a number (in rupees)
+    const amountInRupees = Number(amount);
+    console.log('Amount being sent to backend (in rupees):', amountInRupees);
+    const orderResponse = await api.post('/payment/capture',{amount: amountInRupees});
 
     if (!orderResponse.data.success) {
       throw new Error(orderResponse.data.message)
@@ -55,10 +58,12 @@ export async function MakePayment(
 
     // Opening the Razorpay SDK
     console.log("creating the options...")
+    console.log("Amount received from backend (in paise):", orderResponse.data.data.amount);
     const options = {
       key: "rzp_test_FygXdONEKJQmc4",
       currency: orderResponse.data.data.currency,
-      amount: `${orderResponse.data.data.amount*10}`,
+      // Amount is already in paise from backend, use it directly
+      amount: orderResponse.data.data.amount,
       order_id: orderResponse.data.data.id,
       name: "AnganAsha",
       description: "Thank you for Donating",
